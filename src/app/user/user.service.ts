@@ -4,6 +4,7 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from './../../environments/environment';
 import { User } from './user';
+import { HeadersUtil } from './../common/TokenUtils';
 
 @Injectable()
 export class UserService {
@@ -11,9 +12,25 @@ export class UserService {
     constructor(private _http: Http) { }
 
     getUser(user: User): Observable<Response> {
-        return this._http.get(`${this.url}/user?userName=${user.userName}&password=${user.password}`)
-            .map((res: any) => {
+        const headers: Headers = HeadersUtil.getHeaders();
+        return this._http.get(`${this.url}/user?userName=${user.userName}&password=${user.password}`, {
+            headers: headers
+        }).map((res: any) => {
                 return res.json();
             })
     }
+
+    login(user: User): Observable<Response> {
+        const data = JSON.stringify(user);
+         const headers: Headers = HeadersUtil.getHeadersWithOutToken();
+        return this._http.post(`${this.url}/user/login`, data, {
+            headers: headers
+        }).map((res: any) => {
+            const tokenObj = JSON.parse(res._body);
+            localStorage.setItem('token', tokenObj.token);
+            //console.log("response", localStorage.getItem('token'));
+            return res.json();
+        })
+    }
+
 }

@@ -17,21 +17,17 @@ export class UserComponent {
   public user: User = new User();
 
   constructor(public userService: UserService,
-   public router: Router) {
+    public router: Router) {
   }
 
   ngOnInit() {
   }
 
   login() {
-    this.userService.getUser(this.user).subscribe(
+    this.userService.login(this.user).subscribe(
       (res: any) => {
-        const result = res.result;
-        if (result.length) {
-          console.log("login successfull");
-          this.router.navigate(['employee']);
-        } else {
-          console.log("login failed.")
+        if(res) {
+           this.router.navigate(['employee']);
         }
       }
     );
