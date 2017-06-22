@@ -1,0 +1,7 @@
+<div id="login">
+    <div class="loginmodal-container">
+        <input type="text" class="form-control" name="First Name" [(ngModel)]="user.userName" placeholder="User Name">
+        <input type="password" class="form-control" name="Last Name" [(ngModel)]="user.password" placeholder="Password">
+        <a (click)="login()" class="btn btn-primary addEmployeeBtn" data-toggle="modal"> Login </a>
+    </div>
+</div>
