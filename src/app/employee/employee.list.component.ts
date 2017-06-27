@@ -149,6 +149,7 @@ export class EmployeeComponent {
         if (res.status === 201) {
           this.newEmployee.sendEmail = true;
           this.loadEmployees();
+          this.newEmployee = new Employee();
         }
         console.log('Response of adding employee from server :: ', res.status);
       }
