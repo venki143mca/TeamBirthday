@@ -7,6 +7,8 @@ export class Employee {
     clientEmail: string;
     email: string;
     status: string;
+    day:string;
+    month: string;
 
     editMode: boolean = false;
     sendEmail: boolean;

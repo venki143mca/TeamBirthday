@@ -12,7 +12,7 @@
             <th>Actions</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th class="date-width">DOB</th>
+            <th class="date-width">MM/DD</th>
             <th>Team</th>
             <th>Email</th>
             <th>Client Email</th>
@@ -26,7 +26,9 @@
             </td>
             <td><input type="text" class="form-control" name="First Name" [(ngModel)]="filter.firstName" placeholder="First Name"></td>
             <td><input type="text" class="form-control" name="Last Name" [(ngModel)]="filter.lastName" placeholder="Last Name"></td>
-            <td><input type="date" class="form-control date-width-select" name="DOB" id="DOB" [(ngModel)]="filter.DOB"></td>
+            <td><input type="text" class="form-control width40" name="team" [(ngModel)]="filter.month" placeholder="MM">/
+                <input type="text" class="form-control width40" name="team" [(ngModel)]="filter.day" placeholder="DD"></td>
+            <!--<td><input type="date" class="form-control date-width-select" name="DOB" id="DOB" [(ngModel)]="filter.DOB"></td>-->
             <td><input type="text" class="form-control" name="team" [(ngModel)]="filter.team" placeholder="Team"></td>
             <td><input type="text" class="form-control" name="email" [(ngModel)]="filter.email" placeholder="Email"></td>
             <td><input type="text" class="form-control" name="clientEmail" [(ngModel)]="filter.clientEmail" placeholder="ClientEmail"></td>
@@ -64,9 +66,15 @@
                 <div *ngIf="!employee.editMode" title="{{ employee.lastName }}">{{ employee.lastName }}</div>
                 <div *ngIf="employee.editMode" title="{{ employee.lastName }}"><input type="text" [(ngModel)]="employee.lastName"></div>
             </td>
-            <td>
+            <!--<td>
                 <div *ngIf="!employee.editMode" title="{{ employee.DOB | date: 'MM-dd-yyyy' }}">{{ employee.DOB | date: 'MM-dd-yyyy' }}</div>
                 <div *ngIf="employee.editMode" title="{{ employee.DOB | date: 'MM-dd-yyyy' }}"><input type="date" [(ngModel)]="employee.DOB"></div>
+            </td>-->
+              <td>
+                <div *ngIf="!employee.editMode" title="{{ employee.month }}" class="displayInline marginLeftDiv">{{ employee.month }} /</div>
+                <div *ngIf="employee.editMode" title="{{ employee.DOB | date: 'MM-dd-yyyy' }}"><input type="date" [(ngModel)]="employee.DOB"></div>
+            
+                <div *ngIf="!employee.editMode" title="{{ employee.day }}" class="displayInline">{{ employee.day }}</div>
             </td>
             <td>
                 <div *ngIf="!employee.editMode" title="{{ employee.team }}">{{ employee.team }}</div>

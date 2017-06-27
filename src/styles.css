@@ -110,7 +110,7 @@ table input {
 }
 
 .date-width {
-  width: 16%
+  width: 12%
 }
 
 .width-10 {
@@ -409,3 +409,18 @@ table input[type=checkbox] {
 #logout {
   margin-left: 53%;
 }
+
+.width40 {
+  width: 44% !important;
+  display: inline-block !important;
+  margin-right: 2%;
+}
+
+.displayInline {
+  display: inline-block;
+}
+
+.marginLeftDiv {
+  margin-left: 30px;
+}
+

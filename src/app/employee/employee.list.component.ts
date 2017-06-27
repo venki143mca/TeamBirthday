@@ -41,6 +41,15 @@ export class EmployeeComponent {
 
   ngOnInit() {
     this.filter.status = "Active";
+    const todayDate: Date = new Date();
+    this.filter.month = todayDate.getMonth()+1+'';
+    if(this.filter.month.length === 1) {
+      this.filter.month = 0 + this.filter.month ;
+    }
+    this.filter.day = todayDate.getDate() + '';
+    if( this.filter.day.length === 1) {
+      this.filter.day = 0 + this.filter.day;
+    }
     this.newEmployee.status = 'Active';
     this.loadEmployees();
     this.getEmailDetails();
@@ -113,6 +122,9 @@ export class EmployeeComponent {
           emp.firstName = obj.firstName;
           emp.lastName = obj.lastName;
           emp.DOB = obj.DOB;
+          const da:String = JSON.stringify(emp.DOB);
+          emp.month = da.substring(6,8);
+          emp.day = da.substring(9,11)
           emp.clientEmail = obj.clientEmail;
           emp.email = obj.email;
           emp.status = obj.status;
