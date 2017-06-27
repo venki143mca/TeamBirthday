@@ -194,4 +194,8 @@ export class EmployeeComponent {
       }
     );
   }
+
+  clearFilters() {
+    this.filter = new Employee();
+  }
 }
